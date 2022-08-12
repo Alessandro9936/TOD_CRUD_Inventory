@@ -1,0 +1,24 @@
+{
+  "name": "tod_crud_inventory",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alessandro9936/TOD_CRUD_Inventory.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alessandro9936/TOD_CRUD_Inventory/issues"
+  },
+  "homepage": "https://github.com/Alessandro9936/TOD_CRUD_Inventory#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "http-errors": "^2.0.0",
+    "mongoose": "^6.5.2"
+  }
+}
