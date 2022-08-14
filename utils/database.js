@@ -1,8 +1,8 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
 
 function connectDB() {
-  const dbLink =
-    "mongodb+srv://alessandro:test123@storyinventory.bh9vq9x.mongodb.net/?retryWrites=true&w=majority";
+  const dbLink = process.env.DB;
 
   // Setup default mongoose connection
   mongoose.connect(dbLink, { useNewUrlParser: true, useUnifiedTopology: true });
