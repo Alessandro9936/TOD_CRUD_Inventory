@@ -8,19 +8,19 @@ const authorSchema = new Schema({
   date_birth: { type: Date },
   sex: { type: String, enum: ["male", "female", "other"] },
   password: { type: String, trim: true, required: true },
-  membership_status: { type: Boolean, required: true },
+  membership_status: { type: Boolean, required: true, default: false },
 });
 
 authorSchema.virtual("url").get(function () {
   return "home/author/" + this._id;
 });
 
-storySchema.virtual("formatted_birthDate").get(function () {
+authorSchema.virtual("formatted_birthDate").get(function () {
   return DateTime.fromJSDate(this.date_birth).toLocaleString(DateTime.DATE_MED);
 });
 
-storySchema.virtual("full_name").get(function () {
-  return this.first_name + this.last;
+authorSchema.virtual("full_name").get(function () {
+  return this.first_name + this.last_name;
 });
 
 module.exports = mongoose.model("Author", authorSchema);
