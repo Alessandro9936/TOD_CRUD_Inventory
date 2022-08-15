@@ -13,8 +13,6 @@ function connectDB() {
   //bind connection to error event (to get notification of connection errors)
   db.on("error", console.error.bind(console));
 
-  console.log(db);
-
   return db;
 }
 
