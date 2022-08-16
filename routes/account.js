@@ -12,9 +12,9 @@ router.get("/login", accountController.account_form_get);
 router.post("/login");
 
 // register form GET
-router.get("/register");
+router.get("/register", accountController.register_form_get);
 
 // register form POST
-router.post("/register");
+router.post("/register", accountController.register_form_post);
 
 module.exports = router;
