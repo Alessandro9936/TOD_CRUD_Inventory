@@ -9,25 +9,15 @@
   <body>
     <h1>Register</h1>
     <form action="" method="post">
-      <!-- FIRST NAME -->
-      <label for="first-name">First Name:</label>
+      <!-- USERNAME -->
+      <label for="username">Username:</label>
       <input
         type="text"
-        name="first_name"
-        id="first_name"
+        name="username"
+        id="username"
         required
-        placeholder="John"
-        value="<%= typeof author != 'undefined' ? author.first_name : '' %>"
-      />
-
-      <!-- LAST NAME -->
-      <label for="last_name">Last Name:</label>
-      <input
-        type="text"
-        name="last_name"
-        id="last_name"
-        placeholder="John"
-        value="<%= typeof author != 'undefined' ? author.last_name : '' %>"
+        placeholder="John34"
+        value="<%= typeof author != 'undefined' ? author.username : '' %>"
       />
 
       <!-- EMAIL -->
