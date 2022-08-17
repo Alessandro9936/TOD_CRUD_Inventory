@@ -2,8 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const authorSchema = new Schema({
-  first_name: { type: String, trim: true, required: true },
-  last_name: { type: String, trim: true },
+  username: { type: String, trim: true, required: true },
   email: { type: String, trim: true, required: true },
   date_birth: { type: Date },
   sex: { type: String, enum: ["male", "female", "other"] },
@@ -22,6 +21,10 @@ authorSchema.virtual("formatted_birthDate").get(function () {
 authorSchema.virtual("full_name").get(function () {
   return this.first_name + this.last_name;
 });
+
+authorSchema.statics.findByUsername = function (usernameInput) {
+  return this.findOne({ username: usernameInput });
+};
 
 authorSchema.statics.findByEmail = function (emailInput) {
   return this.findOne({ email: emailInput });
