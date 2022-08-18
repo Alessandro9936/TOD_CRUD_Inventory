@@ -15,12 +15,15 @@
         id="username"
         name="username"
         autocomplete="username"
+        required
       />
       <label for="password">Password:</label>
-      <input type="password" id="password" name="password" />
+      <input type="password" id="password" name="password" required />
       <button type="submit">Login</button>
       <a href="#">NEXT</a>
       <a href="/account/register">SIGN UP</a>
     </form>
+
+    <% if(messages.error) { %> <%= messages.error%> <% } %>
   </body>
 </html>

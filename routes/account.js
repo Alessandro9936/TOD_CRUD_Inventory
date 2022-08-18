@@ -9,7 +9,7 @@ router.get("/", (req, res, next) => res.redirect("/account/login"));
 router.get("/login", accountController.account_form_get);
 
 // login form POST
-router.post("/login");
+router.post("/login", accountController.account_form_post);
 
 // register form GET
 router.get("/register", accountController.register_form_get);

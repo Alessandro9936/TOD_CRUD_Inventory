@@ -1,36 +1,68 @@
-const connectToDB = require("./utils/database");
+require("dotenv").config();
 
 const express = require("express");
-const mongoose = require("mongoose");
+const MongoStore = require("connect-mongo");
 
 const path = require("path");
 const createError = require("http-errors");
 
 const session = require("express-session");
 const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
+const flash = require("express-flash");
 
-const app = express();
-app.listen(3000);
-const db = connectToDB();
+// Require Routes
 
 const indexRouter = require("./routes/index");
 const accountRouter = require("./routes/account");
 const catalogRouter = require("./routes/catalog");
 
+/* ---------------- EXPRESS APP  ----------------*/
+
+const app = express();
+app.listen(3000);
+
+const db = require("./utils/database")();
+
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, "public")));
+app.use(flash());
+
+/* ---------------- SESSION SETUP ----------------*/
+
+// define where store sessions in database
+const sessionStore = MongoStore.create({
+  dbName: "sessions",
+  mongoUrl: process.env.DB,
+  collectionName: "sessions",
+});
+
+// structure of sessions
+app.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: true,
+    store: sessionStore,
+  })
+);
+
+/* ----------------  PASSPORT AUTHENTICATION ----------------*/
+
+// Need to require the entire Passport config module so app.js knows about it
+require("./utils/passport");
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "public")));
+/* ---------------- ROUTES ----------------*/
 
 app.use("/", indexRouter);
 app.use("/account", accountRouter);
 app.use("/home", catalogRouter);
+
+/* ---------------- ERROR HANDLER ----------------*/
 
 app.use(function (req, res, next) {
   next(createError(404));
