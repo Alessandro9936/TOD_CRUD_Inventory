@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+  <body>
+    <%- include('./partials/navBar.ejs', {pageTitle}) %>
+
+    <section class="grid-container">
+      <article class="story-container">
+        <div class="story-header">
+          <h3>How Eating Apple Improve Health</h2>
+        </div>
+        <div class="story-body">
+          <div class="date-category">
+            <p>Date: <span>23/2/1999</span></p>
+            <p>Category: <span>Sport</span></p>
+          </div>
+          <p class="body">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex voluptas
+            dolorem fuga. Ea quod ipsa dicta libero sed repudiandae possimus!
+            Corrupti architecto perspiciatis consequuntur cupiditate vel
+            officiis, laudantium voluptatibus totam? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, sapiente nesciunt. Aperiam itaque autem velit alias, temporibus repellendus ratione libero dolor vel odio ad blanditiis est totam. Sapiente, sint beatae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus molestias magni quis quidem ad nulla, explicabo voluptas dolores, qui sunt fugiat obcaecati? Cumque labore accusantium vitae impedit ducimus quia molestias. Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, quasi! Accusantium explicabo autem est error nisi. Corrupti dolorem repudiandae adipisci enim aliquam ratione cumque rerum, reiciendis perferendis ut fugit labore.
+          </p>
+        </div>
+        <div class="story-footer">
+          <div class="user">
+            <span class="user-image"></span>
+            <div class="user-credentials">
+              <span class="username">Username</span>
+              <span class="birth_date">Date of birth</span>
+            </div>
+          </div>
+          <a href="" class="story-btn">More</a>
+        </div>
+      </article>
+      <article class="story-container">
+        <div class="story-header">
+          <p>How Eating Apple Improve Health</p>
+        </div>
+        <div class="story-body">
+          <div class="date-category">
+            <p>Date: <span>23/2/1999</span></p>
+            <p>Category: <span>Sport</span></p>
+          </div>
+          <p class="body">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex voluptas
+            dolorem fuga. Ea quod ipsa dicta libero sed repudiandae possimus!
+            Corrupti architecto perspiciatis consequuntur cupiditate vel
+            officiis, laudantium voluptatibus totam?
+          </p>
+        </div>
+        <div class="story-footer">
+          <div class="user">
+            <span class="user-image"></span>
+            <div class="user-credentials">
+              <span class="username">Username</span>
+              <span class="birth_date">Date of birth</span>
+            </div>
+          </div>
+          <a href="" class="story-btn">More</a>
+        </div>
+      </article>
+      <article class="story-container">
+        <div class="story-header">
+          <p>How Eating Apple Improve Health</p>
+        </div>
+        <div class="story-body">
+          <div class="date-category">
+            <p>Date: <span>23/2/1999</span></p>
+            <p>Category: <span>Sport</span></p>
+          </div>
+          <p class="body">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex voluptas
+            dolorem fuga. Ea quod ipsa dicta libero sed repudiandae possimus!
+            Corrupti architecto perspiciatis consequuntur cupiditate vel
+            officiis, laudantium voluptatibus totam?
+          </p>
+        </div>
+        <div class="story-footer">
+          <div class="user">
+            <span class="user-image"></span>
+            <div class="user-credentials">
+              <span class="username">Username</span>
+              <span class="birth_date">Date of birth</span>
+            </div>
+          </div>
+          <a href="" class="story-btn">More</a>
+        </div>
+      </article>
+    </section>
+
+    <% if(!list_story.length > 0) { %>
+    <p>No story available</p>
+    <% } %> <%- include('./partials/icons.ejs') %>
+  </body>
+</html>
