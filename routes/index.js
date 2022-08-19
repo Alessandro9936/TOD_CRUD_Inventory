@@ -3,7 +3,11 @@ const router = express.Router();
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.redirect("/account");
+  if (req.isAuthenticated()) {
+    res.redirect("/story/catalog");
+  } else {
+    res.redirect("/account");
+  }
 });
 
 module.exports = router;

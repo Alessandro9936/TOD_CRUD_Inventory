@@ -14,7 +14,7 @@ const flash = require("express-flash");
 
 const indexRouter = require("./routes/index");
 const accountRouter = require("./routes/account");
-const catalogRouter = require("./routes/catalog");
+const storyRouter = require("./routes/storyRoutes");
 
 /* ---------------- EXPRESS APP  ----------------*/
 
@@ -55,12 +55,11 @@ app.use(
 require("./utils/passport");
 app.use(passport.initialize());
 app.use(passport.session());
-
 /* ---------------- ROUTES ----------------*/
 
 app.use("/", indexRouter);
 app.use("/account", accountRouter);
-app.use("/home", catalogRouter);
+app.use("/story", storyRouter);
 
 /* ---------------- ERROR HANDLER ----------------*/
 
