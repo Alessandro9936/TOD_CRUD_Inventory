@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 @import "./navBar.css";
 @import "./stories.css";
+@import "./storyForm.css";
 
 * {
   padding: 0;
@@ -19,6 +20,8 @@
   --space-08: 0.5rem;
   --space-16: 1rem;
   --space-24: 1.5rem;
+
+  --container-margins: 7rem 4rem;
 }
 
 body {
@@ -33,9 +36,4 @@ body {
 
 .hidden {
   display: none;
-}
-
-.hidden:hover,
-.hidden:active {
-  display: s;
 }
