@@ -3,8 +3,6 @@ const router = express.Router();
 
 const accountController = require("../controllers/accountController");
 
-router.get("/", (req, res, next) => res.redirect("/account/login"));
-
 // login form GET
 router.get("/login", accountController.account_form_get);
 

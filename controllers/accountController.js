@@ -19,7 +19,7 @@ exports.account_form_post = (req, res, next) => {
 
   // doesn't perform the authentication right away, it returns a middleware. To make it works the middleware returned must be invoked.
   passport.authenticate("local", {
-    successRedirect: "/home",
+    successRedirect: "/story/catalog",
     failureRedirect: "/",
     failureFlash: true,
   })(req, res, next);

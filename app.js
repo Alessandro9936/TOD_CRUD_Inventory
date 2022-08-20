@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const MongoStore = require("connect-mongo");
+const morgan = require("morgan");
 
 const path = require("path");
 const createError = require("http-errors");
@@ -29,6 +30,7 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(flash());
+app.use(morgan("tiny"));
 
 /* ---------------- SESSION SETUP ----------------*/
 

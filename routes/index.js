@@ -6,7 +6,7 @@ router.get("/", function (req, res, next) {
   if (req.isAuthenticated()) {
     res.redirect("/story/catalog");
   } else {
-    res.redirect("/account");
+    res.redirect("/account/login");
   }
 });
 
