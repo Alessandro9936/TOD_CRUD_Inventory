@@ -1,0 +1,30 @@
+<article class="story-container">
+    <div class="story-header">
+      <h3><%= story.title %></h2>
+    </div>
+    <div class="story-body">
+      <div class="date-category">
+        <p>Date: <span><%= story.formatted_created_date %></span></p>
+        <p>Category: <span><%= story.category %></span></p>
+      </div>
+      <p class="body">
+        <%= story.body  %> 
+        
+      </p>
+    </div>
+    <div class="story-footer">
+      <div class="user">
+        <span class="user-image"></span>
+        <div class="user-credentials">
+          <span class="username"><%= story.author.username %></span>
+          <span class="birth_date"><%= story.author.formatted_birthDate %></span>
+        </div>
+      </div>
+      <div class="info_story_buttons">
+        <% if(currentUser.email === story.author.email) { %> 
+          <a href="" class="story-btn">Update</a>
+          <% } %> 
+        <a href="" class="story-btn">More</a>
+      </div>     
+    </div>
+  </article>
