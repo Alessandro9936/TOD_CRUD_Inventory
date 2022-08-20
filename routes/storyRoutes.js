@@ -5,10 +5,10 @@ const storyController = require("../controllers/storyController");
 // STORIES
 
 // GET request for creating a story
-router.get("/create");
+router.get("/create", storyController.story_create_get);
 
 // POST request for creating a story
-router.post("/create");
+router.post("/create", storyController.story_create_post);
 
 // GET request for updating a story
 router.get("/:id/update");
