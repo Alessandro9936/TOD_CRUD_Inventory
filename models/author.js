@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const { DateTime } = require("luxon");
+
 const authorSchema = new Schema({
   username: { type: String, trim: true, required: true },
   email: { type: String, trim: true, required: true },
@@ -16,10 +18,6 @@ authorSchema.virtual("url").get(function () {
 
 authorSchema.virtual("formatted_birthDate").get(function () {
   return DateTime.fromJSDate(this.date_birth).toLocaleString(DateTime.DATE_MED);
-});
-
-authorSchema.virtual("full_name").get(function () {
-  return this.first_name + this.last_name;
 });
 
 authorSchema.statics.findByUsername = function (usernameInput) {

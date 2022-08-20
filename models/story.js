@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 const storySchema = new Schema(
   {
     author: { type: Schema.Types.ObjectId, ref: "Author", required: true },
-    category: { type: Schema.Types.ObjectId, ref: "Category", required: true },
+    category: String, // Temporary before implementing creation of new categories
+    //category: { type: Schema.Types.ObjectId, ref: "Category", required: true },
     title: { type: String, required: true },
     body: { type: String, required: true },
   },
@@ -13,15 +14,11 @@ const storySchema = new Schema(
 );
 
 storySchema.virtual("formatted_created_date").get(function () {
-  return DateTime.fromJSDate(this.createdAt).toLocaleString(
-    DateTime.DATETIME_MED
-  );
+  return DateTime.fromJSDate(this.createdAt).toLocaleString(DateTime.DATE_MED);
 });
 
 storySchema.virtual("formatted_updated_date").get(function () {
-  return DateTime.fromJSDate(this.updatedAt).toLocaleString(
-    DateTime.DATETIME_MED
-  );
+  return DateTime.fromJSDate(this.updatedAt).toLocaleString(DateTime.DATE_MED);
 });
 
 storySchema.virtual("url").get(function () {
