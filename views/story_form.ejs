@@ -21,9 +21,13 @@
           <div class="category-field">
             <label for="category">Category: </label>
             <select name="category" id="category" required>
-              <option value="sport">Sport</option>
-              <option value="kitchen">Kitchen</option>
-              <option value="life">Life</option>
+
+
+              <% if(categories.length > 0) { %> 
+                <% categories.forEach(category => {%> 
+                  <option value="<%=category.name%>"><%=category.name%></option>
+                  <% }) %> 
+                <% } %> 
             </select>
           </div>
                    
