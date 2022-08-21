@@ -5,8 +5,7 @@ const Schema = mongoose.Schema;
 const storySchema = new Schema(
   {
     author: { type: Schema.Types.ObjectId, ref: "Author", required: true },
-    category: String, // Temporary before implementing creation of new categories
-    //category: { type: Schema.Types.ObjectId, ref: "Category", required: true },
+    category: { type: Schema.Types.ObjectId, ref: "Category", required: true },
     title: { type: String, required: true },
     body: { type: String, required: true },
   },
