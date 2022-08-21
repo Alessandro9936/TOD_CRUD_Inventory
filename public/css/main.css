@@ -2,6 +2,7 @@
 @import "./navBar.css";
 @import "./stories.css";
 @import "./storyForm.css";
+@import "./categoryForm.css";
 
 * {
   padding: 0;

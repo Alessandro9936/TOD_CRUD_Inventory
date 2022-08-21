@@ -101,6 +101,6 @@ exports.register_form_post = [
     });
 
     // Redirect to home page
-    res.redirect("/home");
+    res.redirect("/account/login");
   },
 ];

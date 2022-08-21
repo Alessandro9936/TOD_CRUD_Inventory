@@ -16,6 +16,7 @@ const flash = require("express-flash");
 const indexRouter = require("./routes/index");
 const accountRouter = require("./routes/account");
 const storyRouter = require("./routes/storyRoutes");
+const categoryRouter = require("./routes/categoryRoutes");
 
 /* ---------------- EXPRESS APP  ----------------*/
 
@@ -67,6 +68,7 @@ app.use(function (req, res, next) {
 app.use("/", indexRouter);
 app.use("/account", accountRouter);
 app.use("/story", storyRouter);
+app.use("/category", categoryRouter);
 
 /* ---------------- ERROR HANDLER ----------------*/
 
