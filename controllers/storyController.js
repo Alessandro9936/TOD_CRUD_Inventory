@@ -14,6 +14,7 @@ exports.story_list = (req, res, next) => {
       if (err) {
         return next(err);
       }
+
       res.render("stories_list", {
         pageTitle: "Home",
         sectionTitle: "Stories",
@@ -43,17 +44,26 @@ exports.story_create_post = (req, res, next) => {
     .map((word) => word[0].toUpperCase() + word.slice(1))
     .join(" ");
 
-  const story = new Story({
-    author: req.user,
-    category: req.body.category,
-    title: formatTitle,
-    body: req.body.body,
-  });
-  story.save((err) => {
-    if (err) {
-      return next(err);
-    } else {
-      res.redirect("/story/catalog");
+  Category.findOne({ name: req.body.category }).exec((err, category) => {
+    const story = new Story({
+      author: req.user,
+      category: category._id,
+      title: formatTitle,
+      body: req.body.body,
+    });
+
+    category.update({ $push: { stories: story } }).exec();
+
+    if (!category.authors.find((author) => author.name === req.user.name)) {
+      category.update({ $push: { authors: req.user } }).exec();
     }
+
+    story.save((err) => {
+      if (err) {
+        return next(err);
+      } else {
+        res.redirect("/story/catalog");
+      }
+    });
   });
 };
