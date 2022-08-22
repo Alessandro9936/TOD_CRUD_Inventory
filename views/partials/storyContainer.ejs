@@ -22,7 +22,7 @@
       </div>
       <div class="info_story_buttons">
         <% if(currentUser.email === story.author.email) { %> 
-          <a href="" class="story-btn">Update</a>
+          <a href="/story/<%=story._id%>/update" class="story-btn">Update</a>
           <% } %> 
         <a href="/story/<%=story._id %> " class="story-btn">More</a>
       </div>     
