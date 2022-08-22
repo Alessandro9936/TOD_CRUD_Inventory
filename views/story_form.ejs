@@ -2,72 +2,8 @@
 <html lang="en">
   <%- include('./partials/head.ejs') %>
   <body>
-    <%- include('./partials/navBar.ejs', {pageTitle}) %>
-
-    <section class="create_story_container">
-      
-        <form action="" method="post" class="form">
-
-          <div class="title-field">
-            <label for="title">Title:</label>
-            <input type="text" name="title" id="title" required/>
-          </div>
-
-          <div class="body-field" >
-            <label for="body">Body:</label>
-            <textarea name="body" id="body" rows="10" required></textarea>
-          </div>
-
-          <div class="category-field">
-            <label for="category">Category: </label>
-            <select name="category" id="category" required>
-
-
-              <% if(categories.length > 0) { %> 
-                <% categories.forEach(category => {%> 
-                  <option value="<%=category.name%>"><%=category.name%></option>
-                  <% }) %> 
-                <% } %> 
-            </select>
-          </div>
-                   
-          <div class="buttons-container">
-            <a href="/story/catalog">Return</a>
-            <div class="handle_form_buttons">
-              <button type="reset" data-reset>Reset</button>
-              <button type="submit" data-submit>Add Story</button>
-          </div>
-
-          
-        </form>
-      </div>
-      <div class="live_preview">
-        <article class="story-container">
-          <div class="story-header">
-            <h3 class="title-content"></h2>
-          </div>
-          <div class="story-body">
-            <div class="date-category">
-              <p>Date: <span><%= new Date().toLocaleDateString("en-US") %> </span></p>
-              <p>Category: <span class="category-content"></span></p>
-            </div>
-            <p class="body-content">
-
-            </p>
-          </div>
-          <div class="story-footer">
-            <div class="user">
-              <span class="user-image"></span>
-              <div class="user-credentials">
-   <span class="username"><%= author.username %></span>
-                <span class="birth_date"><%= author.formatted_birthDate %></span>
-              </div>
-            </div>
-            
-          </div>
-        </article>
-      </div>
-    </section>
-     <%- include('./partials/icons.ejs') %>
+    <%- include('./partials/navBar.ejs') %> <%-
+    include('./partials/storyForm.ejs') %> <%- include('./partials/icons.ejs')
+    %>
   </body>
 </html>
