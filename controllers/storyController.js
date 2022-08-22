@@ -39,16 +39,11 @@ exports.story_create_get = (req, res, next) => {
 
 // Handle create story form on POST
 exports.story_create_post = (req, res, next) => {
-  const formatTitle = req.body.title
-    .split(" ")
-    .map((word) => word[0].toUpperCase() + word.slice(1))
-    .join(" ");
-
   Category.findOne({ name: req.body.category }).exec((err, category) => {
     const story = new Story({
       author: req.user,
       category: category._id,
-      title: formatTitle,
+      title: req.body.title.toLowerCase(),
       body: req.body.body,
     });
 
@@ -62,6 +57,7 @@ exports.story_create_post = (req, res, next) => {
       if (err) {
         return next(err);
       } else {
+        console.log(story);
         res.redirect("/story/catalog");
       }
     });
@@ -69,7 +65,6 @@ exports.story_create_post = (req, res, next) => {
 };
 
 // Handle display story details
-
 exports.story_detail = (req, res, next) => {
   Story.findById({ _id: req.params.id })
     .populate("author")
@@ -83,4 +78,55 @@ exports.story_detail = (req, res, next) => {
         story,
       });
     });
+};
+
+// Handle update story form on GET
+exports.story_update_get = (req, res, next) => {
+  async.parallel(
+    {
+      curStory(callback) {
+        Story.findById({ _id: req.params.id })
+          .populate("category")
+          .populate("author")
+          .exec(callback);
+      },
+      categoriesList(callback) {
+        Category.find({}).exec(callback);
+      },
+    },
+    (err, results) => {
+      if (err) return next(err);
+      res.render("story_form", {
+        pageTitle: "Story Detail",
+        sectionTitle: "Story Detail",
+        story: results.curStory,
+        author: req.user,
+        categories: results.categoriesList,
+      });
+    }
+  );
+};
+
+// Handle update story form on POST
+exports.story_update_post = (req, res, next) => {
+  Category.findOne({ name: req.body.category }).exec((err, category) => {
+    if (err) return next(err);
+    Story.findByIdAndUpdate(req.params.id, {
+      category: category._id,
+      title: req.body.title.toLowerCase(),
+      body: req.body.body,
+    }).exec((err, story) => {
+      if (err) return next(err);
+      res.redirect(story.url);
+    });
+  });
+};
+
+// Handle delete story form on POST
+
+exports.story_delete_post = (req, res, next) => {
+  Story.findByIdAndDelete(req.params.id).exec((err) => {
+    if (err) return next(err);
+    res.redirect("/story/catalog");
+  });
 };

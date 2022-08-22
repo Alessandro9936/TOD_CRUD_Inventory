@@ -11,16 +11,13 @@ router.get("/create", storyController.story_create_get);
 router.post("/create", storyController.story_create_post);
 
 // GET request for updating a story
-router.get("/:id/update");
+router.get("/:id/update", storyController.story_update_get);
 
 // POST request for updating a story
-router.post("/:id/update");
+router.post("/:id/update", storyController.story_update_post);
 
 // GET request for deleting a story
-router.get("/:id/delete");
-
-// GET request for deleting a story
-router.post("/:id/delete");
+router.post("/:id/delete", storyController.story_delete_post);
 
 // GET request for all storyies
 router.get("/catalog", storyController.story_list);
