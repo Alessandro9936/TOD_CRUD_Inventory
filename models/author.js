@@ -13,7 +13,7 @@ const authorSchema = new Schema({
 });
 
 authorSchema.virtual("url").get(function () {
-  return "home/author/" + this._id;
+  return "/author/" + this._id;
 });
 
 authorSchema.virtual("formatted_birthDate").get(function () {

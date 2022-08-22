@@ -21,7 +21,7 @@ storySchema.virtual("formatted_updated_date").get(function () {
 });
 
 storySchema.virtual("url").get(function () {
-  return "/home/story/" + this._id;
+  return "/story/" + this._id;
 });
 
 module.exports = mongoose.model("Story", storySchema);
