@@ -3,6 +3,7 @@
 @import "./stories.css";
 @import "./storyForm.css";
 @import "./categoryForm.css";
+@import "./storyDetails.css";
 
 * {
   padding: 0;
