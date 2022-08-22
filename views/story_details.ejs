@@ -17,7 +17,9 @@
         </p>
       </div>
       <div class="story-author">
-        <p><span class="intro">Author: </span><%= story.author.username %></p>
+        <a class="author-link" href="/account/profile/<%=story.author._id%>"
+          ><span class="intro">Author: </span><%= story.author.username %></a
+        >
         <p>
           <span class="intro">Date of Birth: </span><%=
           story.author.formatted_birthDate %>
