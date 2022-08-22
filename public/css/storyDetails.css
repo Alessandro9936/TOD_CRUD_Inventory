@@ -14,3 +14,11 @@
 .intro {
   font-weight: bold;
 }
+
+.home-btn {
+  color: var(--red);
+}
+
+.home-btn:hover {
+  text-decoration: underline;
+}
