@@ -7,8 +7,7 @@ const outputBody = document.querySelector(".body-content");
 const categoryInput = document.getElementById("category");
 const categoryOutput = document.querySelector(".category-content");
 
-const resetButton = document.querySelector("[data-reset]");
-const submitButton = document.querySelector("[data-submit]");
+const buttonReset = document.querySelectorAll("[field-reset]");
 
 function changeContentOnInput(e, outputTarget) {
   outputTarget.textContent = e.target.value;
@@ -26,7 +25,7 @@ inputBody.addEventListener("keyup", (e) => {
   changeContentOnInput(e, outputBody);
 });
 
-[resetButton, submitButton].forEach((button) =>
+buttonReset.forEach((button) =>
   button.addEventListener("click", (e) => {
     outputBody.textContent = "";
     outputTitle.textContent = "";
@@ -34,3 +33,9 @@ inputBody.addEventListener("keyup", (e) => {
 );
 
 categoryInput.addEventListener("change", changeSelectValue);
+
+window.addEventListener("load", () => {
+  outputTitle.textContent = inputTitle.value;
+  outputBody.textContent = inputBody.textContent;
+  categoryOutput.textContent = categoryInput.value;
+});
