@@ -5,7 +5,7 @@
     <div class="story-body">
       <div class="date-category">
         <p>Date: <span><%= story.formatted_created_date %></span></p>
-        <p>Category: <span><%= story.category.name %></span></p>
+        <p>Category: <span><%= story.category.name[0].toUpperCase() + story.category.name.slice(1) %></span></p>
       </div>
       <p class="body">
         <%= story.body  %> 
@@ -24,7 +24,7 @@
         <% if(currentUser.email === story.author.email) { %> 
           <a href="" class="story-btn">Update</a>
           <% } %> 
-        <a href="" class="story-btn">More</a>
+        <a href="/story/<%=story._id %> " class="story-btn">More</a>
       </div>     
     </div>
   </article>
