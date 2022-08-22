@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+  <body>
+    <%- include('./partials/navBar.ejs', {pageTitle}) %>
+    <article class="story-details-container">
+      <div class="story">
+        <p><span class="intro">Title: </span><%= story.title %></p>
+        <p><span class="intro">Body: </span><%= story.body %></p>
+        <p>
+          <span class="intro">Category: </span><%=
+          story.category.name[0].toUpperCase() + story.category.name.slice(1)%>
+        </p>
+        <p>
+          <span class="intro">Published: </span><%= story.formatted_created_date
+          %>
+        </p>
+      </div>
+      <div class="story-author">
+        <p><span class="intro">Author: </span><%= story.author.username %></p>
+        <p>
+          <span class="intro">Date of Birth: </span><%=
+          story.author.formatted_birthDate %>
+        </p>
+      </div>
+    </article>
+
+    <%- include('./partials/icons.ejs') %>
+  </body>
+</html>

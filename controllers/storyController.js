@@ -67,3 +67,20 @@ exports.story_create_post = (req, res, next) => {
     });
   });
 };
+
+// Handle display story details
+
+exports.story_detail = (req, res, next) => {
+  Story.findById({ _id: req.params.id })
+    .populate("author")
+    .populate("category")
+    .exec((err, story) => {
+      if (err) return next(err);
+
+      res.render("story_details", {
+        pageTitle: "Story Detail",
+        sectionTitle: "Story Detail",
+        story,
+      });
+    });
+};

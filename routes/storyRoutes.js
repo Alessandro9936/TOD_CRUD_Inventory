@@ -22,10 +22,10 @@ router.get("/:id/delete");
 // GET request for deleting a story
 router.post("/:id/delete");
 
-// GET request for one story
-router.get("/:id");
-
 // GET request for all storyies
 router.get("/catalog", storyController.story_list);
+
+// GET request for one story
+router.get("/:id", storyController.story_detail);
 
 module.exports = router;
