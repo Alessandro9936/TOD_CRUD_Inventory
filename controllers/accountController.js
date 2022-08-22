@@ -4,6 +4,9 @@ const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 
 const Author = require("../models/author");
+const Story = require("../models/story");
+
+const async = require("async");
 
 // display login form on GET
 exports.account_form_get = (req, res) => {
@@ -45,6 +48,7 @@ exports.register_form_post = [
     .escape(),
   body("email")
     .isEmail()
+    .withMessage("use a valid format (test@test.com)")
     .normalizeEmail()
     .custom((value) => {
       return Author.findByEmail(value).then((author) => {
@@ -104,3 +108,35 @@ exports.register_form_post = [
     res.redirect("/account/login");
   },
 ];
+
+// Handle details of account
+exports.account_details = (req, res, next) => {
+  async.parallel(
+    {
+      selectedAuthor(callback) {
+        Author.findById({ _id: req.params.id }).exec(callback);
+      },
+      storiesByAuthor(callback) {
+        Story.find().where("author").equals(req.params.id).exec(callback);
+      },
+    },
+    (err, results) => {
+      console.log(results);
+      if (err) return next(err);
+      res.render("profile_detail", {
+        pageTitle: "Profile Detail",
+        sectionTitle: `${results.selectedAuthor.username} profile`,
+        user: results.selectedAuthor,
+        userStories: results.storiesByAuthor,
+      });
+    }
+  );
+};
+
+// Handle account logout
+exports.account_logout = (req, res, next) => {
+  req.logout((err) => {
+    if (err) return next(err);
+  });
+  res.redirect("/");
+};

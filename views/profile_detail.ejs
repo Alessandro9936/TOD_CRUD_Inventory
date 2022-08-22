@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+  <body>
+    <%- include('./partials/navBar.ejs', {pageTitle}) %>
+    <section class="profile-container">
+      <h1><%= user.username %></h1>
+      <div class="profile-image"></div>
+      <p>
+        <span class="info">Date of birth: </span><%= user.formatted_birthDate %>
+      </p>
+      <p><span class="info">Sex: </span><%= user.sex %></p>
+      <p><span class="info">Email: </span><%= user.email %></p>
+
+      <% if(!user.membership_status) { %>
+      <p><span class="info">Membership: </span>You are not a member</p>
+      <% } else { %>
+      <p><span class="info">Membership: </span>You are a member</p>
+      <% } %>
+
+      <div class="stories">
+        <span class="info">Stories by <%=user.username%>:</span>
+        <% if(userStories.length > 0) { %> <% userStories.forEach(story => { %>
+        <a href="/story/<%= story._id %>" class="user-story"
+          ><%= story.title %></a
+        >
+        <% }) %> <% } %>
+      </div>
+
+      <% if(user.username === currentUser.username) { %>
+      <a href="/account/log-out" class="logout-link">Logout</a>
+      <div class="handle-profile">
+        <button class="handle-profile-buttons">Update</button>
+        <button class="handle-profile-buttons">Delete</button>
+      </div>
+      <% } %>
+    </section>
+
+    <%- include('./partials/icons.ejs') %>
+  </body>
+</html>

@@ -15,4 +15,10 @@ router.get("/register", accountController.register_form_get);
 // register form POST
 router.post("/register", accountController.register_form_post);
 
+// show users profile details
+router.get("/profile/:id", accountController.account_details);
+
+// handle profile logout
+router.get("/log-out", accountController.account_logout);
+
 module.exports = router;

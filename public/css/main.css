@@ -4,6 +4,7 @@
 @import "./storyForm.css";
 @import "./categoryForm.css";
 @import "./storyDetails.css";
+@import "./profileDetails.css";
 
 * {
   padding: 0;
