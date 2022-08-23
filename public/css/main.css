@@ -5,6 +5,7 @@
 @import "./categoryForm.css";
 @import "./storyDetails.css";
 @import "./profileDetails.css";
+@import "./profileForm.css";
 
 * {
   padding: 0;

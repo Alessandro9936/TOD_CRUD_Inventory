@@ -121,7 +121,6 @@ exports.account_details = (req, res, next) => {
       },
     },
     (err, results) => {
-      console.log(results);
       if (err) return next(err);
       res.render("profile_detail", {
         pageTitle: "Profile Detail",
@@ -131,6 +130,75 @@ exports.account_details = (req, res, next) => {
       });
     }
   );
+};
+
+// display profile update form on GET
+exports.account_update_get = (req, res, next) => {
+  res.render("profile_form", {
+    pageTitle: "Update Profile",
+    sectionTitle: "Update Your Profile",
+  });
+};
+
+// handle profile update on GET
+exports.account_update_post = [
+  body("username")
+    .notEmpty()
+    .isAlphanumeric()
+    .withMessage("Username must contain only letters and numbers")
+    .custom((value, { req }) => {
+      return Author.findByUsername(value).then((author) => {
+        if (req.user.username === value) return true;
+        if (author) throw new Error(`${author.username} is already in use`);
+      });
+    })
+    .escape(),
+  body("email")
+    .isEmail()
+    .withMessage("use a valid format (test@test.com)")
+    .normalizeEmail()
+    .custom((value, { req }) => {
+      return Author.findByEmail(value).then((author) => {
+        if (req.user.email === value) return true;
+        if (author) throw new Error(`${author.email} is already in use`);
+      });
+    }),
+  (req, res, next) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      res.render("profile_form", {
+        pageTitle: "Update Profile",
+        sectionTitle: "Update Your Profile",
+        errors: errors.array(),
+      });
+      return;
+    }
+
+    const membershipBoolean =
+      req.body.membership_status === "member" ? true : false;
+    Author.findByIdAndUpdate(req.params.id, {
+      username: req.body.username,
+      email: req.body.email,
+      date_birth: req.body.date_birth,
+      sex: req.body.sex,
+      membership_status: membershipBoolean,
+    }).exec();
+
+    res.redirect(req.user.url);
+  },
+];
+
+// handle profile update on POST
+exports.account_delete_post = (req, res, next) => {
+  Story.deleteMany({ author: req.params.id }).exec((err) => {
+    if (err) return next(err);
+  });
+
+  Author.findByIdAndDelete(req.params.id).exec((err) => {
+    if (err) return next(err);
+    res.redirect("/");
+  });
 };
 
 // Handle account logout

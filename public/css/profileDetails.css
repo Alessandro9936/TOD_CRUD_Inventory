@@ -46,12 +46,6 @@
   border: none;
 }
 
-.handle-profile-buttons:last-of-type {
-  background-color: var(--white);
-  border: 2px solid var(--red);
-  color: var(--red);
-}
-
 .user-story {
   color: red;
 }

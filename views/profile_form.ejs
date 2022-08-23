@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+  <body>
+    <%- include('./partials/navBar.ejs', {pageTitle}) %>
+    
+    <section class="update_profile_container">
+      
+        <form action="" method="post" class="form">
+    
+          <div class="username-field">
+            <label for="title">Username:</label>
+            <input type="text" name="username" id="username"  value="<%= currentUser.username %>" required/>
+          </div>
+    
+          <div class="date_birth-field" >
+            <label for="date_birth">Date of Birth:</label>
+            <input type="date" name="date_birth" id="date_birth" value="<%= currentUser.birthDate_forms %>" required>
+          </div>
+    
+          <div class="sex-field">
+            <p>Sex: </p>
+            <div>
+            <input type="radio" id="male" name="sex" value="male" <%= currentUser.sex == 'male' ? 'checked' : ''%> >
+            <label for="male">Male</label>
+        </div>
+        <div>
+            <input type="radio" id="female" name="sex" value="female" <%= currentUser.sex == 'female' ? 'checked' : ''%>>
+            <label for="female">Woman</label>    
+        </div>   
+          </div>
+
+          <div class="email-field" >
+            <label for="email">Date of Birth:</label>
+            <input type="email" name="email" id="email" value="<%= currentUser.email  %>" required>
+          </div>
+
+          <div class="membership-field">
+            <p>Membership: </p>
+            <div>
+            <input type="radio" id="no_member" name="membership_status" value="no_member" <%= !currentUser.membership_status ? 'checked' : ''%>>
+            <label for="no_member">Not a Member</label>
+        </div>
+        <div>
+            <input type="radio" id="member" name="membership_status" value="member" <%= currentUser.membership_status ? 'checked' : ''%>>
+            <label for="member">Member</label>
+        </div>  
+          </div>
+                   
+          <div class="buttons-container">
+            <a href="/story/catalog">Return</a>
+            <div class="handle_form_buttons">             
+                    <button type="submit" field-reset>Update</button> 
+                    <button type="submit" field-reset formaction="/account/profile/<%=  currentUser._id %>/delete">Delete</button> 
+                    
+          </div>  
+          </div>   
+        </form>
+    
+    
+      </div>
+      <% if(typeof errors != 'undefined') { %>
+        <ul>
+          <% errors.forEach(err => { %>
+          <li><%= err.msg %></li>
+          <% }) %>
+        </ul>
+    
+        <% } %>
+    </section>
+
+    <%- include('./partials/icons.ejs') %>
+  </body>
+</html>

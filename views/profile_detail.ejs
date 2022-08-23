@@ -30,8 +30,11 @@
       <% if(user.username === currentUser.username) { %>
       <a href="/account/log-out" class="logout-link">Logout</a>
       <div class="handle-profile">
-        <button class="handle-profile-buttons">Update</button>
-        <button class="handle-profile-buttons">Delete</button>
+        <a
+          href="/account/profile/<%= user._id  %>/update "
+          class="handle-profile-buttons"
+          >Update</a
+        >
       </div>
       <% } %>
     </section>
