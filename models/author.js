@@ -13,11 +13,15 @@ const authorSchema = new Schema({
 });
 
 authorSchema.virtual("url").get(function () {
-  return "/author/" + this._id;
+  return "/account/profile/" + this._id;
 });
 
 authorSchema.virtual("formatted_birthDate").get(function () {
   return DateTime.fromJSDate(this.date_birth).toLocaleString(DateTime.DATE_MED);
+});
+
+authorSchema.virtual("birthDate_forms").get(function () {
+  return DateTime.fromJSDate(this.date_birth).toFormat("yyyy-MM-dd");
 });
 
 authorSchema.statics.findByUsername = function (usernameInput) {
