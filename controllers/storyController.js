@@ -57,7 +57,6 @@ exports.story_create_post = (req, res, next) => {
       if (err) {
         return next(err);
       } else {
-        console.log(story);
         res.redirect("/story/catalog");
       }
     });
