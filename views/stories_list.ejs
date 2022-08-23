@@ -9,7 +9,19 @@
       include('./partials/storyContainer.ejs', {story}) %> <% }) %>
     </section>
 
-    <% if(!list_story.length > 0) { %>
+    <% if(!currentUser) { %>
+    <p>
+      If you want to write your stories and see all the details of other stories
+      you must register or be logged in
+    </p>
+    <% } %> <% if(currentUser && !currentUser.membership_status) { %>
+    <p>
+      <a href="/account/profile/<%= currentUser._id %>/update "
+        >(Link: Become a member)</a
+      >
+      to see all the details of other stories
+    </p>
+    <% } %> <% if(!list_story.length > 0) { %>
     <p>No story available</p>
     <% } %> <%- include('./partials/icons.ejs') %>
   </body>

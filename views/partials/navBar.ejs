@@ -5,6 +5,7 @@
       <h1 class="section__title"><%= sectionTitle %></h1>
     </div>
     <div class="links">
+      <% if(currentUser) { %>
       <div class="links__container">
         <span class="btn-style"
           >Create New <ion-icon name="chevron-down-outline" data-icon></ion-icon
@@ -25,5 +26,9 @@
         >
       </li>
     </div>
+    <% } else { %>
+    <li><a href="/account/login" class="btn-style">Login</a></li>
+    <li><a href="/account/register" class="btn-style">Register</a></li>
+    <% } %>
   </ul>
 </nav>

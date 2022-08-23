@@ -17,13 +17,20 @@
         </p>
       </div>
       <div class="story-author">
-        <a class="author-link" href="/account/profile/<%=story.author._id%>"
-          ><span class="intro">Author: </span><%= story.author.username %></a
-        >
+        <% if(currentUser.username == story.author.username &&
+        !currentUser.membership_status || currentUser &&
+        currentUser.membership_status) { %>
+        <a class="author-link" href="/account/profile/<%=story.author._id%>">
+          <span class="intro">Author: </span><%= story.author.username %>
+        </a>
         <p>
-          <span class="intro">Date of Birth: </span><%=
-          story.author.formatted_birthDate %>
+          <span class="intro">Date of Birth: </span
+          ><%=story.author.formatted_birthDate %>
         </p>
+        <% } else if (!currentUser || !currentUser.membership_status) { %>
+        <p><span class="intro">Author: </span>Anonymous</p>
+        <p><span class="intro">Date of Birth: </span>Anonym</p>
+        <% } %>
       </div>
       <a href="/story/catalog" class="home-btn">Go Back to Catalog</a>
     </article>

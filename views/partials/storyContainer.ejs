@@ -16,12 +16,19 @@
       <div class="user">
         <span class="user-image"></span>
         <div class="user-credentials">
-          <span class="username"><%= story.author.username %></span>
-          <span class="birth_date"><%= story.author.formatted_birthDate %></span>
+
+              <% if(currentUser.username == story.author.username && !currentUser.membership_status || currentUser && currentUser.membership_status) { %> 
+                <span class="username"><%= story.author.username%></span>
+                <span class="birth_date"><%= story.author.formatted_birthDate%></span>
+              <% } else if (!currentUser || !currentUser.membership_status) { %> 
+                <span class="username">Anonymous</span>
+                  <% } %> 
+          
+          
         </div>
       </div>
       <div class="info_story_buttons">
-        <% if(currentUser.email === story.author.email) { %> 
+        <% if(currentUser && currentUser.email === story.author.email) { %> 
           <a href="/story/<%=story._id%>/update" class="story-btn">Update</a>
           <% } %> 
         <a href="/story/<%=story._id %> " class="story-btn">More</a>
