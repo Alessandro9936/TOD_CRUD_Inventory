@@ -10,7 +10,7 @@ const async = require("async");
 
 // display login form on GET
 exports.account_form_get = (req, res) => {
-  res.render("login_form");
+  res.render("login_form", { pageTitle: "Login" });
 };
 
 // Handle login form on POST
@@ -30,7 +30,7 @@ exports.account_form_post = (req, res, next) => {
 
 // display register form on GET
 exports.register_form_get = (req, res) => {
-  res.render("register_form");
+  res.render("register_form", { pageTitle: "Register" });
 };
 
 // Handle register form on POST
@@ -91,6 +91,7 @@ exports.register_form_post = [
 
     if (!errors.isEmpty()) {
       res.render("register_form", {
+        pageTitle: "Register",
         author,
         errors: errors.array(),
       });

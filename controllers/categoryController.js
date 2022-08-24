@@ -49,7 +49,7 @@ exports.category_create_post = [
 
         if (!errors.isEmpty()) {
           res.render("category_form", {
-            pageTitle: "New Category",
+            pageTitle: "Create Category",
             sectionTitle: "Create Category",
             categories_list,
             errors: errors.array(),
