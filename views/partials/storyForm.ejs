@@ -26,14 +26,14 @@
       </div>
                
       <div class="buttons-container">
-        <a href="/story/catalog">Return</a>
+        <a href="/story/catalog" class="underline_link">< Return</a>
         <div class="handle_form_buttons">
             <% if(typeof story !='undefined') { %> 
-                <button type="submit" field-reset>Update</button>
-                <button type="submit" field-reset formaction="/story/<%=story._id %>/delete ">Delete Story</button>
+                <button class="btn-style empty" type="submit" field-reset>Update</button>
+                <button class="btn-style" type="submit" field-reset formaction="/story/<%=story._id %>/delete ">Delete Story</button>
                 <% } else { %> 
-                    <button type="reset" field-reset>Reset</button>
-                    <button type="submit" field-reset>Add Story</button>
+                    <button class="btn-style empty" type="reset" field-reset>Reset</button>
+                    <button class="btn-style" type="submit" field-reset>Add Story</button>
                     <% } %>                  
       </div>     
     </form>

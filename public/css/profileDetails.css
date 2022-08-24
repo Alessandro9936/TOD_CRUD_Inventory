@@ -1,7 +1,7 @@
 .profile-container {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
   margin: var(--container-margins);
   width: fit-content;
 }
@@ -17,39 +17,6 @@
   font-weight: bold;
 }
 
-.logout-link {
-  color: red;
-}
-
-.logout-link:hover {
-  text-decoration: underline;
-}
-
-.handle-profile {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.handle-profile-buttons {
-  cursor: pointer;
-  padding: var(--space-08) var(--space-16);
-  border-radius: var(--border-radius);
-
-  color: var(--violet);
-  font: inherit;
-  font-weight: bold;
-}
-
-.handle-profile-buttons:first-of-type {
-  background-color: var(--red);
-  border: none;
-}
-
-.user-story {
-  color: red;
-}
-
-.user-story:hover {
-  text-decoration: underline;
+.stories .btn-style {
+  margin-left: 0.6rem;
 }

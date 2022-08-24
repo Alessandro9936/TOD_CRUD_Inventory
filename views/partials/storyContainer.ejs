@@ -1,4 +1,5 @@
 <article class="story-container">
+  
     <div class="story-header">
       <h3><%= story.title %></h2>
     </div>
@@ -17,7 +18,7 @@
         <span class="user-image"></span>
         <div class="user-credentials">
 
-              <% if(currentUser.username == story.author.username && !currentUser.membership_status || currentUser && currentUser.membership_status) { %> 
+              <% if(currentUser && currentUser.username == story.author.username && !currentUser.membership_status || currentUser && currentUser.membership_status) { %> 
                 <span class="username"><%= story.author.username%></span>
                 <span class="birth_date"><%= story.author.formatted_birthDate%></span>
               <% } else if (!currentUser || !currentUser.membership_status) { %> 
@@ -29,9 +30,9 @@
       </div>
       <div class="info_story_buttons">
         <% if(currentUser && currentUser.email === story.author.email) { %> 
-          <a href="/story/<%=story._id%>/update" class="story-btn">Update</a>
+          <a href="/story/<%=story._id%>/update" class="btn-style">Update</a>
           <% } %> 
-        <a href="/story/<%=story._id %> " class="story-btn">More</a>
+        <a href="/story/<%=story._id %> " class="btn-style">More</a>
       </div>     
     </div>
   </article>

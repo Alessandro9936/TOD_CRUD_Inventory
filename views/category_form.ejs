@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include('./partials/head.ejs') %>
-  <body>
+  <body class="body-pattern">
     <%- include('./partials/navBar.ejs', {pageTitle}) %>
 
     <section class="create_category_container">
@@ -11,6 +11,16 @@
           <div class="category-name">
             <label for="name">Title:</label>
             <input type="text" name="name" id="name" required/>
+
+            <% if(typeof errors != 'undefined') { %>
+              <ul class="error-list">
+                <% errors.forEach(err => { %>
+                <li>&#9679; Category <%= err.msg %></li>
+                <% }) %>
+              </ul>
+            </div>
+        
+            <% } %>
           </div>
 
           <div class="all-categories">
@@ -18,17 +28,17 @@
             <div class="category_buttons">
               <% if(categories_list) { %> 
                 <% categories_list.forEach(category => { %>
-                  <a href="/category/<%=category._id%>" class="category_button"><%=category.name[0].toUpperCase() + category.name.slice(1)%></a>
+                  <a class="btn-style" href="/category/<%=category._id%>" class="category_button"><%=category.name[0].toUpperCase() + category.name.slice(1)%></a>
                   <% }) %> 
                   <% } %>
                 </div>
           </div>
 
           <div class="buttons-container">
-            <a href="/story/catalog">Return</a>
+            <a class="underline_link" href="/story/catalog">< Return</a>
             <div class="handle_form_buttons">
-              <button type="reset" data-reset>Reset</button>
-              <button type="submit" data-submit>Add Category</button>
+              <button class="btn-style empty" type="reset" data-reset>Reset</button>
+              <button class="btn-style" type="submit" data-submit>Add Category</button>
           </div>
 
 
@@ -36,14 +46,6 @@
           
         </form>
       </div>
-      <% if(typeof errors != 'undefined') { %>
-        <ul>
-          <% errors.forEach(err => { %>
-          <li><%= err.msg %></li>
-          <% }) %>
-        </ul>
-    
-        <% } %>
     
     </section>
      <%- include('./partials/icons.ejs') %>

@@ -1,11 +1,5 @@
-a {
-  text-decoration: none;
-  color: var(--violet);
-}
-
 .nav_bar {
   width: 100%;
-  background-color: var(--white);
 
   padding: var(--space-16) var(--space-24);
 }
@@ -29,12 +23,17 @@ a {
 
 .logo__icon {
   display: inline-block;
+  color: var(--text);
 
   width: 48px;
   height: 48px;
 
-  border: var(--border);
   border-radius: var(--border-radius);
+}
+
+.logo-image {
+  width: 100%;
+  height: 100%;
 }
 
 .section__title {
@@ -66,14 +65,8 @@ a {
   cursor: pointer;
 }
 
-.btn-style {
+.links__container .btn-style {
   z-index: 1;
-  display: inline-block;
-  background-color: var(--red);
-
-  padding: var(--space-08) var(--space-16);
-  border-radius: var(--border-radius);
-  text-align: center;
 }
 
 .links__container li {
@@ -94,6 +87,8 @@ a {
 
   border-radius: var(--border-radius);
   border: var(--border);
+
+  background-color: var(--white);
 }
 
 .hidden-links a {

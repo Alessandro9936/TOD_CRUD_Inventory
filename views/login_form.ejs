@@ -1,29 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Log In</title>
-  </head>
+  <%- include('./partials/head.ejs') %>
   <body>
-    <h1>Log In</h1>
-    <form action="" method="post">
-      <label for="username">Username: </label>
-      <input
-        type="text"
-        id="username"
-        name="username"
-        autocomplete="username"
-        required
-      />
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required />
-      <button type="submit">Login</button>
-      <a href="/story/catalog">Proceed without login</a>
-      <a href="/account/register">SIGN UP</a>
-    </form>
+    <div class="login-form-container">
+      <h1>Get Started</h1>
+      <a href="/story/catalog" class="underline_link">Proceed without login</a>
+      <form action="" method="post" class="login-form">
+        <div class="login-form-fields">
+          <label for="username">Username: </label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            autocomplete="username"
+            required
+          />
+        </div>
+        <div class="login-form-fields">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <div class="login-form-buttons">
+          <button type="submit" class="btn-style">Login</button>
+          <a href="/account/register" class="btn-style">Sign Up</a>
+        </div>
+      </form>
 
-    <% if(messages.error) { %> <%= messages.error%> <% } %>
+      <% if(messages.error) { %>
+      <ul class="error-list">
+        <% messages.error.forEach(error => { %>
+        <li>&#9679; <%= error %></li>
+        <% }) %>
+      </ul>
+      <% } %>
+    </div>
   </body>
 </html>

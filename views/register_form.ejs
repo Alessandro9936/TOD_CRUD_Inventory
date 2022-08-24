@@ -1,74 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF_8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register</title>
-  </head>
+  <%- include('./partials/head.ejs', {pageTitle: 'Register'}) %>
   <body>
-    <h1>Register</h1>
-    <form action="" method="post">
-      <!-- USERNAME -->
-      <label for="username">Username:</label>
-      <input
-        type="text"
-        name="username"
-        id="username"
-        required
-        placeholder="John34"
-        value="<%= typeof author != 'undefined' ? author.username : '' %>"
-      />
+    <div class="login-form-container">
+      <h1>Register</h1>
+      <form action="" method="post" class="login-form">
+        <!-- USERNAME -->
+        <div class="login-form-fields">
+          <label for="username">Username:</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            required
+            placeholder="John34"
+            value="<%= typeof author != 'undefined' ? author.username : '' %>"
+          />
+        </div>
 
-      <!-- EMAIL -->
-      <label for="email">Email:</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        required
-        value="<%= typeof author != 'undefined' ? author.email : '' %>"
-      />
+        <!-- EMAIL -->
+        <div class="login-form-fields">
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            value="<%= typeof author != 'undefined' ? author.email : '' %>"
+          />
+        </div>
 
-      <!-- BIRTH DATE -->
-      <label for="birth_date">Birth Date:</label>
-      <input
-        type="date"
-        id="birth_date"
-        name="birth_date"
-        required
-        value="<%= typeof author != 'undefined' ? author.birthDate_forms : '' %>"
-      />
+        <!-- BIRTH DATE -->
+        <div class="login-form-fields">
+          <label for="birth_date">Birth Date:</label>
+          <input
+            type="date"
+            id="birth_date"
+            name="birth_date"
+            required
+            value="<%= typeof author != 'undefined' ? author.birthDate_forms : '' %>"
+          />
+        </div>
 
-      <!-- SEX -->
-      <label for="sex">Sex:</label>
-      <select name="sex" id="sex">
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="other">Other</option>
-      </select>
+        <!-- SEX -->
+        <div class="login-form-fields">
+          <label for="sex">Sex:</label>
+          <select name="sex" id="sex">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <!--  PASSWORD -->
 
-      <!--  PASSWORD -->
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required />
-      <label for="confirm_password">Confirm Password:</label>
-      <input
-        type="password"
-        id="confirm_password"
-        name="confirm_password"
-        required
-      />
-
-      <!-- SUBMIT -->
-      <button type="submit">Register</button>
-    </form>
-
-    <% if(typeof errors != 'undefined') { %>
-    <ul>
-      <% errors.forEach(err => { %>
-      <li><%= err.msg %></li>
-      <% }) %>
-    </ul>
+        <div class="login-form-fields">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+          <label for="confirm_password">Confirm Password:</label>
+          <input
+            type="password"
+            id="confirm_password"
+            name="confirm_password"
+            required
+          />
+        </div>
+        <!-- SUBMIT -->
+        <div class="login-form-buttons register-buttons">
+          <a href="/account/login" class="underline_link">< Login</a>
+          <button type="submit" class="btn-style">Register</button>
+        </div>
+      </form>
+      <% if(typeof errors != 'undefined') { %>
+      <ul class="error-list">
+        <% errors.forEach(err => { %>
+        <li>&#9679; <%= err.msg %></li>
+        <% }) %>
+      </ul>
+    </div>
 
     <% } %>
   </body>

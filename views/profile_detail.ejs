@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include('./partials/head.ejs') %>
-  <body>
+  <body class="body-pattern">
     <%- include('./partials/navBar.ejs', {pageTitle}) %>
     <section class="profile-container">
       <h1><%= user.username %></h1>
@@ -21,18 +21,16 @@
       <div class="stories">
         <span class="info">Stories by <%=user.username%>:</span>
         <% if(userStories.length > 0) { %> <% userStories.forEach(story => { %>
-        <a href="/story/<%= story._id %>" class="user-story"
+        <a class="btn-style" href="/story/<%= story._id %>"
           ><%= story.title %></a
         >
         <% }) %> <% } %>
       </div>
 
       <% if(user.username === currentUser.username) { %>
-      <a href="/account/log-out" class="logout-link">Logout</a>
+      <a href="/account/log-out" class="underline_link">Logout</a>
       <div class="handle-profile">
-        <a
-          href="/account/profile/<%= user._id  %>/update "
-          class="handle-profile-buttons"
+        <a href="/account/profile/<%= user._id  %>/update " class="btn-style"
           >Update</a
         >
       </div>

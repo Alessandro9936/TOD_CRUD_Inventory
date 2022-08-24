@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include('./partials/head.ejs') %>
-  <body>
+  <body class="body-pattern">
     <%- include('./partials/navBar.ejs', {pageTitle}) %>
     <article class="story-details-container">
       <div class="story">
@@ -17,22 +17,22 @@
         </p>
       </div>
       <div class="story-author">
-        <% if(currentUser.username == story.author.username &&
+        <% if(!currentUser || !currentUser.membership_status) { %>
+        <p><span class="intro">Author: </span>Anonymous</p>
+        <p><span class="intro">Date of Birth: </span>Anonym</p>
+        <% } else if (currentUser.username == story.author.username &&
         !currentUser.membership_status || currentUser &&
         currentUser.membership_status) { %>
-        <a class="author-link" href="/account/profile/<%=story.author._id%>">
+        <a class="underline_link" href="/account/profile/<%=story.author._id%>">
           <span class="intro">Author: </span><%= story.author.username %>
         </a>
         <p>
           <span class="intro">Date of Birth: </span
           ><%=story.author.formatted_birthDate %>
         </p>
-        <% } else if (!currentUser || !currentUser.membership_status) { %>
-        <p><span class="intro">Author: </span>Anonymous</p>
-        <p><span class="intro">Date of Birth: </span>Anonym</p>
         <% } %>
       </div>
-      <a href="/story/catalog" class="home-btn">Go Back to Catalog</a>
+      <a href="/story/catalog" class="underline_link">Go Back to Catalog</a>
     </article>
 
     <%- include('./partials/icons.ejs') %>
