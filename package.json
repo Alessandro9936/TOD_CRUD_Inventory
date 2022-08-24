@@ -1,10 +1,14 @@
 {
   "name": "tod_crud_inventory",
   "version": "1.0.0",
+  "engines": {
+    "node": "v16.14.2"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +23,7 @@
   "dependencies": {
     "async": "^3.2.4",
     "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
     "connect-mongo": "^4.6.0",
     "dotenv": "^16.0.1",
     "ejs": "^3.1.8",
@@ -26,6 +31,7 @@
     "express-flash": "^0.0.2",
     "express-session": "^1.17.3",
     "express-validator": "^6.14.2",
+    "helmet": "^5.1.1",
     "http-errors": "^2.0.0",
     "luxon": "^3.0.1",
     "mongoose": "^6.5.2",

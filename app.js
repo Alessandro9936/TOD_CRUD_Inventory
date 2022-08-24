@@ -3,6 +3,8 @@ require("dotenv").config();
 const express = require("express");
 const MongoStore = require("connect-mongo");
 const morgan = require("morgan");
+const compression = require("compression");
+const helmet = require("helmet");
 
 const path = require("path");
 const createError = require("http-errors");
@@ -27,6 +29,9 @@ const db = require("./utils/database")();
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+
+app.use(helmet());
+app.use(compression());
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
