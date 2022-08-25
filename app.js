@@ -23,7 +23,7 @@ const categoryRouter = require("./routes/categoryRoutes");
 /* ---------------- EXPRESS APP  ----------------*/
 
 const app = express();
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
 
 const db = require("./utils/database")();
 
@@ -40,20 +40,16 @@ app.use(morgan("tiny"));
 
 /* ---------------- SESSION SETUP ----------------*/
 
-// define where store sessions in database
-const sessionStore = MongoStore.create({
-  dbName: "sessions",
-  mongoUrl: process.env.DB,
-  collectionName: "sessions",
-});
-
 // structure of sessions
 app.use(
   session({
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
-    store: sessionStore,
+    store: MongoStore.create({
+      mongoUrl: process.env.DB,
+      collectionName: "sessions",
+    }),
   })
 );
 
