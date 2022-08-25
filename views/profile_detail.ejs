@@ -5,7 +5,6 @@
     <%- include('./partials/navBar.ejs', {pageTitle}) %>
     <section class="profile-container">
       <h1><%= user.username %></h1>
-      <div class="profile-image"></div>
       <p>
         <span class="info">Date of birth: </span><%= user.formatted_birthDate %>
       </p>
@@ -36,7 +35,5 @@
       </div>
       <% } %>
     </section>
-
-    <%- include('./partials/icons.ejs') %>
   </body>
 </html>

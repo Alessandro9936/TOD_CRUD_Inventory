@@ -137,8 +137,8 @@ a {
   margin-bottom: var(--space-08);
 }
 
-[data-icon] {
-  transform: translateY(3px);
+.chevron-icon {
+  transform: translateY(2px);
 }
 
 [data-message] {

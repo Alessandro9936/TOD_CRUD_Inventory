@@ -16,12 +16,14 @@
 
 .logo {
   display: flex;
-  align-items: center;
 
   gap: var(--space-16);
 }
 
 .logo__icon {
+  background: url(../images/home.svg) no-repeat center;
+  transform: translateY(7px);
+
   display: inline-block;
   color: var(--text);
 
